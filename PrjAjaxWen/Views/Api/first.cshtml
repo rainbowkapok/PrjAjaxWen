@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "first";
+}
+@section Style{
+<style>
+    h1 {
+        color: green
+    }
+</style>
+}
+
+<h1>first</h1>
+<div id="myDiv"></div>
+@section Script{
+    <script>
+        const theDiv = document.querySelector("#myDiv")
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", () => {
+            const data = xhr.responseText//取文字資料
+            //theDiv.textContent = data//顯示出來在div上
+            theDiv.innerHTML=`<h3>${data}</h3>`
+        })
+        xhr.open("GET","/api/index")
+        xhr.send()
+    </script>
+ }

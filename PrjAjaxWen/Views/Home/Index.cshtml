@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section Style{
+    <style>
+        h1 {
+            color: green
+        }
+    </style>
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <ul id="myUL"></ul>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@section Script{
+    <script>
+        console.log("Hi Jason")
+        console.log($('.display-4').text())
+        const TheUL = document.querySelector("#myUL")
+        const Frag = document.createDocumentFragment();
+        var emp = {
+            "employees": [
+                { "name": "Tom", "workYears": 3, "salary": 35000 },
+                { "name": "Jack", "workYears": 5, "salary": 40000 },
+                { "name": "Mary", "workYears": 7, "salary": 45000 }
+            ]
+        }
+        for (let i = 0, max = emp.employees.length; i < max; i++) {
+            console.log(emp.employees[i].name)
+            //const txt = document.createTextNode(emp.employees[i].name) //建立文字節點
+            const { name, workYears } = emp.employees[i]
+            const txt = document.createTextNode(name+"+"+ workYears)
+            const ele = document.createElement("li")
+            ele.appendChild(txt)
+            
+            Frag.appendChild(ele)
+        }
+        TheUL.appendChild(Frag)
+
+        //var emps = [{ "name": "Tom", "workYears": 3, "salary": 35000 },
+        //{ "name": "Jack", "workYears": 5, "salary": 40000 },
+        //    { "name": "Mary", "workYears": 7, "salary": 45000 }];
+        //for (let i = 0, max = emps.length; i < max; i++) {
+        //    console.log(emps[i].name)
+        //}
+    </script>
+}
